@@ -65,7 +65,7 @@
         }
 
         .splash-logo-text {
-            font-size: 3.8rem;
+            font-size: 4.8rem;
             font-weight: 900;
             letter-spacing: -1.5px;
             color: #1C3829;
@@ -150,7 +150,7 @@
         .login-card {
             width: 100%;
             max-width: 1280px;
-            min-height: 720px;
+            min-height: 700px;
             max-height: 860px;
             height: 85vh;
             background: #ffffff;

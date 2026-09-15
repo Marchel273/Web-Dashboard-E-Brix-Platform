@@ -8,6 +8,7 @@ require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/controllers/BrixController.php';
 require_once __DIR__ . '/controllers/HarvestController.php';
 require_once __DIR__ . '/controllers/KrigingController.php';
+require_once __DIR__ . '/controllers/AdminController.php';
 
 $authCtrl = new AuthController();
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
@@ -60,26 +61,38 @@ if ($page === 'login') {
 }
 
 $currentUser = $authCtrl->getCurrentUser();
+$role = $currentUser['role'] ?? 'ADMIN';
 $krigingNotice = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'trigger_kriging') {
     $krigingCtrl = new KrigingController();
-    $krigingNotice = $krigingCtrl->triggerKrigingJob($currentUser['id'] ?? 'u-admin-001');
+    $res = $krigingCtrl->triggerKrigingJob($currentUser['id'] ?? 'u-admin-001');
+    $krigingNotice = $res['message'];
 }
 
-// Check Flask API health status
-$apiHealth = ApiClient::get('/health');
-$isApiOnline = ($apiHealth && isset($apiHealth['status']) && $apiHealth['status'] === 'ONLINE');
-
+// Controllers Instances
 $brixCtrl = new BrixController();
 $harvestCtrl = new HarvestController();
+$adminCtrl = new AdminController();
 
-if ($page === 'jadwal_panen') {
-    $recommendations = $harvestCtrl->getRecommendations();
-    require_once __DIR__ . '/views/jadwal_panen.php';
+// Data fetching based on role & sub-page
+$samples = $brixCtrl->getBrixSamples();
+$metrics = $brixCtrl->getMetrics($samples);
+$recommendations = $harvestCtrl->getRecommendations();
+$subPage = $page;
+
+// Route Views based on Role
+if ($role === 'ADMIN') {
+    $pendingUsers = $adminCtrl->getPendingUsers();
+    $activeUsers = $adminCtrl->getActiveUsers();
+    $auditLogs = $adminCtrl->getAuditLogs();
+    $pabrikList = $adminCtrl->getMasterDataPabrik();
+    $varietasList = $adminCtrl->getMasterVarietas();
+    require_once __DIR__ . '/views/dashboard_admin.php';
+} elseif ($role === 'MANAGER_AGRONOMI') {
+    require_once __DIR__ . '/views/dashboard_manager.php';
 } else {
-    $samples = $brixCtrl->getBrixSamples();
-    $metrics = $brixCtrl->getMetrics($samples);
-    require_once __DIR__ . '/views/dashboard.php';
+    // PETUGAS_LAPANGAN
+    require_once __DIR__ . '/views/dashboard_petugas.php';
 }
 ?>
