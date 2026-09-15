@@ -478,18 +478,74 @@
             z-index: 1;
         }
 
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+
+        /* Tablet: hide right banner, single-column card */
         @media (max-width: 900px) {
             .login-card {
                 grid-template-columns: 1fr;
-                max-width: 480px;
+                max-width: 500px;
                 min-height: auto;
+                border-radius: 22px;
             }
-            .banner-section {
-                display: none;
-            }
+            .banner-section { display: none; }
             .form-section {
                 padding: 2.25rem 2.5rem;
             }
+            .form-title { font-size: 1.75rem; }
+        }
+
+        /* Mobile: full-width, reduced padding */
+        @media (max-width: 600px) {
+            .login-wrapper { padding: 0.75rem; align-items: flex-start; padding-top: 1.5rem; }
+
+            .login-card {
+                max-width: 100%;
+                border-radius: 18px;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+            }
+
+            .form-section {
+                padding: 1.75rem 1.4rem;
+            }
+
+            .brand-header { gap: 10px; margin-bottom: 0.75rem; }
+            .brand-logo-icon { width: 38px; height: 38px; font-size: 17px; }
+            .brand-name { font-size: 15px; }
+            .brand-sub  { font-size: 10px; }
+
+            .form-title { font-size: 1.5rem; letter-spacing: -0.3px; }
+            .form-desc  { font-size: 12.5px; min-height: auto; margin-bottom: 1rem; }
+
+            .secure-pill { font-size: 9.5px; padding: 4px 11px; }
+
+            .role-pill { font-size: 11px; padding: 8px 8px; }
+
+            .input-label { font-size: 10px; }
+            .input-field { font-size: 13px; padding: 12px 40px 12px 44px; }
+
+            .btn-submit { font-size: 13.5px; padding: 13px; }
+        }
+
+        /* Small phones: ≤400px */
+        @media (max-width: 400px) {
+            .login-wrapper { padding: 0.5rem; padding-top: 1rem; }
+
+            .form-section { padding: 1.4rem 1.1rem; }
+
+            .form-title { font-size: 1.3rem; }
+
+            .role-selector { flex-wrap: wrap; border-radius: 14px; }
+            .role-pill { flex: 1 1 40%; font-size: 10.5px; }
+
+            .input-field { font-size: 12.5px; }
+            .btn-submit { font-size: 13px; }
+
+            /* Splash text shrinks */
+            .splash-logo-text { font-size: 3rem; }
+            .splash-icon { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -585,7 +641,9 @@
             </div>
             
             <div style="font-size:11.5px; color:var(--text-muted); font-weight:600; text-align:center; margin-top:1.2rem;">
-                &copy; <?= date('Y') ?> E-BRIX Enterprise Platform | PG Gempolkrep
+
+
+            &copy; <?= date('Y') ?> E-BRIX Enterprise Platform | PG Gempolkrep
             </div>
         </div>
 

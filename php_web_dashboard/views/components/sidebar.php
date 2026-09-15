@@ -5,10 +5,12 @@ $page = $_GET['page'] ?? 'dashboard';
 ?>
 <div class="sidebar">
     <div class="sidebar-brand">
-        <div class="sidebar-logo">EB</div>
+        <div style="width:46px; height:46px; border-radius:14px; background:linear-gradient(135deg,#22c55e,#16a34a); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(34,197,94,0.35);">
+            <i class="fa-solid fa-seedling" style="font-size:22px; color:#fff;"></i>
+        </div>
         <div>
-            <div style="font-weight:800; font-size:16px;">E-BRIX</div>
-            <div style="font-size:10px; opacity:0.6;">Monitoring Spasial Tebu</div>
+            <div style="font-weight:900; font-size:19px; letter-spacing:0.5px;">E-BRIX</div>
+            <div style="font-size:11px; opacity:0.75; margin-top:1px;">Monitoring Spasial Tebu</div>
         </div>
     </div>
 

@@ -11,50 +11,19 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --primary: #00b050;
-            --primary-dark: #1C3829;
-            --bg-main: #F0F4F1;
-            --border-color: rgba(0,0,0,0.07);
-        }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-main); margin: 0; padding: 0; color: #1a2e20; }
-        .sidebar { width: 260px; background-color: var(--primary-dark); height: 100vh; position: fixed; left: 0; top: 0; padding: 1.5rem 1rem; box-sizing: border-box; color: white; display:flex; flex-direction:column; overflow-y:auto; }
-        .sidebar-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
-        .sidebar-logo { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
-        .user-profile-card { background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.12); }
-        .avatar { width: 36px; height: 36px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: white; }
-        .user-name { font-size: 13px; font-weight: 800; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .role-badge { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase; }
-        .sidebar-nav { list-style: none; padding: 0; margin: 0; }
-        .nav-section-title { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px 12px; }
-        .sidebar-nav li a { display: flex; align-items: center; gap: 12px; padding: 10px 14px; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 10px; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
-        .sidebar-nav li a.active, .sidebar-nav li a:hover { background: rgba(255,255,255,0.1); color: white; }
-        .btn-logout { display: flex; align-items: center; gap: 10px; color: #ff6b6b; text-decoration: none; font-size: 13px; font-weight: 700; padding: 10px 14px; border-radius: 10px; background: rgba(231,76,60,0.1); }
-        .main-content { margin-left: 260px; padding: 1.5rem 2rem; }
-        .header-card { background: white; border-radius: 14px; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-        .metric-card { background: white; border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border-color); border-left: 4px solid var(--primary); }
-        .metric-title { font-size: 11px; color: #7a9a84; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-        .metric-value { font-size: 1.8rem; font-weight: 800; color: #1a2e20; margin-top: 4px; }
-        .card { background: white; border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
-        #map { height: 480px; border-radius: 10px; width: 100%; }
-        .btn-kriging { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-        .btn-kriging:hover { background: #009040; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 13.5px; }
-        th { background: #f9fbf9; font-weight: 700; color: #555; }
-        .badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; }
-        .badge-p1 { background: #fde8e8; color: #e74c3c; }
-        .badge-p2 { background: #fef5e7; color: #f39c12; }
-        .badge-p3 { background: #e6f7ed; color: #2ecc71; }
-    </style>
+    <link rel="stylesheet" href="assets/dashboard.css" />
 </head>
 <body>
 
+<!-- Hamburger toggle (mobile) -->
+<button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+    <i class="fa-solid fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <?php require_once __DIR__ . '/components/sidebar.php'; ?>
 
-<div class="main-content">
+<div class="main-content" id="mainContent">
     <div class="header-card">
         <div>
             <h2 style="margin:0; font-size:1.2rem; font-weight:800;">Dashboard Manager Agronomi</h2>
@@ -222,6 +191,21 @@
         </script>
     <?php endif; ?>
 </div>
+
+<script>
+(function(){
+    const btn     = document.getElementById('hamburgerBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    function openSidebar()  { sidebar.classList.add('open'); overlay.classList.add('active'); }
+    function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
+    btn.addEventListener('click', function(){ sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+    overlay.addEventListener('click', closeSidebar);
+    document.querySelectorAll('.sidebar-nav li a').forEach(function(a){
+        a.addEventListener('click', function(){ if(window.innerWidth <= 768) closeSidebar(); });
+    });
+})();
+</script>
 
 </body>
 </html>
