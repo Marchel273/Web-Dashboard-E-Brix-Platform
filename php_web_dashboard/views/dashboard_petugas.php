@@ -18,7 +18,7 @@
             --border-color: rgba(0,0,0,0.07);
         }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-main); margin: 0; padding: 0; color: #1a2e20; }
-        .sidebar { width: 260px; background-color: var(--primary-dark); height: 100vh; position: fixed; left: 0; top: 0; padding: 1.5rem 1rem; box-sizing: border-box; color: white; display:flex; flex-direction:column; }
+        .sidebar { width: 260px; background-color: var(--primary-dark); height: 100vh; position: fixed; left: 0; top: 0; padding: 1.5rem 1rem; box-sizing: border-box; color: white; display:flex; flex-direction:column; overflow-y:auto; }
         .sidebar-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
         .sidebar-logo { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
         .user-profile-card { background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.12); }
@@ -26,9 +26,9 @@
         .user-name { font-size: 13px; font-weight: 800; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .role-badge { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase; }
         .sidebar-nav { list-style: none; padding: 0; margin: 0; }
-        .sidebar-nav li a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 10px; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+        .nav-section-title { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px 12px; }
+        .sidebar-nav li a { display: flex; align-items: center; gap: 12px; padding: 10px 14px; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 10px; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
         .sidebar-nav li a.active, .sidebar-nav li a:hover { background: rgba(255,255,255,0.1); color: white; }
-        .role-switcher-box { margin-top: 1rem; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; }
         .btn-logout { display: flex; align-items: center; gap: 10px; color: #ff6b6b; text-decoration: none; font-size: 13px; font-weight: 700; padding: 10px 14px; border-radius: 10px; background: rgba(231,76,60,0.1); }
         .main-content { margin-left: 260px; padding: 1.5rem 2rem; }
         .header-card { background: white; border-radius: 14px; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
@@ -53,7 +53,7 @@
 <div class="main-content">
     <div class="header-card">
         <div>
-            <h2 style="margin:0; font-size:1.2rem; font-weight:800;">📋 Portal Petugas Lapangan & Surveyor</h2>
+            <h2 style="margin:0; font-size:1.2rem; font-weight:800;">Portal Petugas Lapangan & Surveyor</h2>
             <p style="margin:4px 0 0; font-size:12px; color:#7a9a84;">Input Sampel Kadar Brix, Foto Refraktometer, & Deteksi AI Machine Learning OCR</p>
         </div>
         <span style="background:#e6f7ed; color:#1a7a40; font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px;">
@@ -64,7 +64,7 @@
     <?php if ($subPage === 'peta_tugas'): ?>
         <!-- PETA LAHAN TUGAS -->
         <div class="card">
-            <h3 style="margin-top:0;">📍 Peta Lahan Tugas & Lokasi Pengambilan Sampel</h3>
+            <h3 style="margin-top:0;">Peta Lahan Tugas & Lokasi Pengambilan Sampel</h3>
             <div id="map"></div>
         </div>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -85,7 +85,7 @@
     <?php elseif ($subPage === 'riwayat_sampel'): ?>
         <!-- RIWAYAT INPUT BRIX -->
         <div class="card">
-            <h3 style="margin-top:0;">📋 Riwayat Input Sampel Brix Petugas</h3>
+            <h3 style="margin-top:0;">Riwayat Input Sampel Brix Petugas</h3>
             <table>
                 <thead>
                     <tr>
@@ -120,7 +120,7 @@
         <!-- FORM INPUT BRIX & ML OCR -->
         <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:1.5rem;">
             <div class="card">
-                <h3 style="margin-top:0;">📷 Input Sampel Brix Lapangan Baru</h3>
+                <h3 style="margin-top:0;">Input Sampel Brix Lapangan Baru</h3>
                 <form onsubmit="event.preventDefault(); alert('Data Sampel Brix Berhasil Disimpan & Diteruskan ke Database!');">
                     <div class="form-group">
                         <label>Pilih Kode Blok Lahan</label>
@@ -156,7 +156,7 @@
             </div>
 
             <div class="card">
-                <h3 style="margin-top:0;">ℹ️ Petunjuk Input Lapangan</h3>
+                <h3 style="margin-top:0;">Petunjuk Input Lapangan</h3>
                 <div style="font-size:13.5px; line-height:1.6; color:#444;">
                     <p>1. <b>Aktifkan GPS HP</b> sebelum menekan tombol ambil lokasi agar koordinat presisi.</p>
                     <p>2. Ambil foto lensa refraktometer dengan pencahayaan yang cukup.</p>

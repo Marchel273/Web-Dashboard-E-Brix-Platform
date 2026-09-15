@@ -10,7 +10,7 @@ class AuthController {
             'password' => 'password',
             'name' => 'Budi Santoso, S.T.',
             'role' => 'ADMIN',
-            'role_label' => '👑 Administrator',
+            'role_label' => 'Administrator',
             'email' => 'admin@pg-gempolkrep.co.id',
             'avatar' => 'BS'
         ],
@@ -20,7 +20,7 @@ class AuthController {
             'password' => 'password',
             'name' => 'Dr. Ir. Hendra Wijaya',
             'role' => 'MANAGER_AGRONOMI',
-            'role_label' => '👨‍🌾 Manager Agronomi',
+            'role_label' => 'Manager Agronomi',
             'email' => 'hendra.agronomi@pg-gempolkrep.co.id',
             'avatar' => 'HW'
         ],
@@ -30,7 +30,7 @@ class AuthController {
             'password' => 'password',
             'name' => 'Ahmad Subagyo',
             'role' => 'PETUGAS_LAPANGAN',
-            'role_label' => '📋 Petugas Lapangan',
+            'role_label' => 'Petugas Lapangan',
             'email' => 'ahmad.field@pg-gempolkrep.co.id',
             'avatar' => 'AS'
         ]

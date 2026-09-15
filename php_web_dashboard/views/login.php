@@ -535,11 +535,11 @@
                 </div>
 
                 <div class="secure-pill" id="rolePillBadge">
-                    <i class="fa-solid fa-shield-halved"></i> <span>PORTAL ADMIN SISTEM</span>
+                    <i class="fa-solid fa-shield-halved"></i> <span>PORTAL ADMIN SISTEM (FULL ACCESS)</span>
                 </div>
 
                 <h1 class="form-title">Sign In</h1>
-                <p class="form-desc" id="roleDescText">Portal Akses Administrator: Kelola persetujuan akun petugas, data master pabrik, dan system audit logs.</p>
+                <p class="form-desc" id="roleDescText">Portal Administrator: Mengakses seluruh fitur sistem (Persetujuan SDM, Master Data, Peta Spasial GEE, Optimization Panen, & Input Sampel).</p>
 
                 <?php if (isset($loginError)): ?>
                     <div class="alert-error">
@@ -548,12 +548,12 @@
                     </div>
                 <?php endif; ?>
 
-                <!-- Role Quick Selector Pills -->
+                <!-- Role Quick Selector Pills (Clean text & FontAwesome icons) -->
                 <div class="role-selector-title">Pilih Role Hak Akses:</div>
                 <div class="role-selector">
-                    <button type="button" class="role-pill active" onclick="selectRole('admin', 'password', this)">👑 Admin</button>
-                    <button type="button" class="role-pill" onclick="selectRole('manager', 'password', this)">👨‍🌾 Manager</button>
-                    <button type="button" class="role-pill" onclick="selectRole('petugas', 'password', this)">📋 Petugas</button>
+                    <button type="button" class="role-pill active" onclick="selectRole('admin', 'password', this)"><i class="fa-solid fa-user-shield"></i> Admin</button>
+                    <button type="button" class="role-pill" onclick="selectRole('manager', 'password', this)"><i class="fa-solid fa-user-tie"></i> Manager</button>
+                    <button type="button" class="role-pill" onclick="selectRole('petugas', 'password', this)"><i class="fa-solid fa-clipboard-user"></i> Petugas</button>
                 </div>
 
                 <form method="POST" action="index.php?action=login">
@@ -609,10 +609,10 @@
             </div>
 
             <div class="platform-tag">
-                <div class="platform-avatar" id="platformAvatar">EB</div>
+                <div class="platform-avatar" id="platformAvatar">AD</div>
                 <div>
-                    <div class="platform-name" id="platformName">CoE E-BRIX Platform</div>
-                    <div class="platform-desc" id="platformDesc">Spatial Intelligence & Harvest Optimization</div>
+                    <div class="platform-name" id="platformName">Portal Administrator</div>
+                    <div class="platform-desc" id="platformDesc">System Security & Super-User Full Access</div>
                 </div>
             </div>
 
@@ -640,16 +640,16 @@
         }, 1600);
     });
 
-    // Role Metadata Details
+    // Role Metadata Details (Clean text without emojis)
     const roleMeta = {
         'admin': {
-            badge: 'PORTAL ADMIN SISTEM',
-            desc: 'Portal Akses Administrator: Kelola persetujuan akun petugas baru, master data pabrik, dan system audit logs.',
+            badge: 'PORTAL ADMIN SISTEM (FULL ACCESS)',
+            desc: 'Portal Administrator: Akses penuh ke seluruh fitur sistem (Persetujuan SDM, Master Data, Peta Spasial GEE, Optimization Panen, & Input Sampel).',
             title: 'Tata Kelola Sistem & Otorisasi SDM.',
             subtitle: 'Mengontrol keamanan akses pengguna, verifikasi pendaftaran petugas lapangan, serta manajemen master data pabrik gula.',
             avatar: 'AD',
             name: 'Portal Administrator',
-            sub: 'System Security & User Management'
+            sub: 'System Security & Super-User Full Access'
         },
         'manager': {
             badge: 'PORTAL MANAGER AGRONOMI',

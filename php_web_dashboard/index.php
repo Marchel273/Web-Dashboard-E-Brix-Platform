@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
     }
 }
 
-// Enforce Login Check: If user is not logged in and trying to access dashboard, redirect to login page
+// Enforce Login Check
 if (!$authCtrl->isLoggedIn() && $page !== 'login') {
     header('Location: index.php?page=login');
     exit;
@@ -81,7 +81,15 @@ if ($role === 'ADMIN') {
     $auditLogs = $adminCtrl->getAuditLogs();
     $pabrikList = $adminCtrl->getMasterDataPabrik();
     $varietasList = $adminCtrl->getMasterVarietas();
-    require_once __DIR__ . '/views/dashboard_admin.php';
+
+    // Admin Super-User: Can view Manager & Petugas pages directly
+    if ($page === 'peta_kriging' || $page === 'jadwal_panen' || $page === 'analisis_trend') {
+        require_once __DIR__ . '/views/dashboard_manager.php';
+    } elseif ($page === 'input_sampel' || $page === 'peta_tugas' || $page === 'riwayat_sampel') {
+        require_once __DIR__ . '/views/dashboard_petugas.php';
+    } else {
+        require_once __DIR__ . '/views/dashboard_admin.php';
+    }
 } elseif ($role === 'MANAGER_AGRONOMI') {
     require_once __DIR__ . '/views/dashboard_manager.php';
 } else {

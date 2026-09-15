@@ -19,7 +19,7 @@
             --border-color: rgba(0,0,0,0.07);
         }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-main); margin: 0; padding: 0; color: #1a2e20; }
-        .sidebar { width: 260px; background-color: var(--primary-dark); height: 100vh; position: fixed; left: 0; top: 0; padding: 1.5rem 1rem; box-sizing: border-box; color: white; display:flex; flex-direction:column; }
+        .sidebar { width: 260px; background-color: var(--primary-dark); height: 100vh; position: fixed; left: 0; top: 0; padding: 1.5rem 1rem; box-sizing: border-box; color: white; display:flex; flex-direction:column; overflow-y:auto; }
         .sidebar-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
         .sidebar-logo { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
         .user-profile-card { background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.12); }
@@ -27,9 +27,9 @@
         .user-name { font-size: 13px; font-weight: 800; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .role-badge { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase; }
         .sidebar-nav { list-style: none; padding: 0; margin: 0; }
-        .sidebar-nav li a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 10px; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+        .nav-section-title { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px 12px; }
+        .sidebar-nav li a { display: flex; align-items: center; gap: 12px; padding: 10px 14px; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 10px; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
         .sidebar-nav li a.active, .sidebar-nav li a:hover { background: rgba(255,255,255,0.1); color: white; }
-        .role-switcher-box { margin-top: 1rem; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; }
         .btn-logout { display: flex; align-items: center; gap: 10px; color: #ff6b6b; text-decoration: none; font-size: 13px; font-weight: 700; padding: 10px 14px; border-radius: 10px; background: rgba(231,76,60,0.1); }
         .main-content { margin-left: 260px; padding: 1.5rem 2rem; }
         .header-card { background: white; border-radius: 14px; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
@@ -57,7 +57,7 @@
 <div class="main-content">
     <div class="header-card">
         <div>
-            <h2 style="margin:0; font-size:1.2rem; font-weight:800;">👨‍🌾 Dashboard Manager Agronomi</h2>
+            <h2 style="margin:0; font-size:1.2rem; font-weight:800;">Dashboard Manager Agronomi</h2>
             <p style="margin:4px 0 0; font-size:12px; color:#7a9a84;">Analisis Spasial Brix, Pemodelan Kriging GEE, & Optimization Jadwal Panen</p>
         </div>
         <form method="POST" action="index.php?action=trigger_kriging">
@@ -76,7 +76,7 @@
         <div class="card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <h3 style="margin:0;">📅 Matriks Rekomendasi & Optimization Panen Tebu</h3>
+                    <h3 style="margin:0;">Matriks Rekomendasi & Optimization Panen Tebu</h3>
                     <p style="margin:4px 0 0; font-size:12px; color:#7a9a84;">Hasil Kalkulasi Algoritma Indeks Kematangan Brix & Kuota Giling Pabrik</p>
                 </div>
                 <button class="btn-kriging" onclick="alert('Jadwal Panen Berhasil Di-Approve & Diterbitkan ke Pabrik Gula!')">✓ Approve & Publish Jadwal</button>
@@ -107,11 +107,11 @@
                         <td><b><?= htmlspecialchars($r['estimasi_tonase']) ?> Ton</b></td>
                         <td>
                             <?php if($r['prioritas_kode'] === 'PRIORITAS_1_SEGERA'): ?>
-                                <span class="badge badge-p1">🔴 Prioritas 1: Segera</span>
+                                <span class="badge badge-p1">Prioritas 1: Segera</span>
                             <?php elseif($r['prioritas_kode'] === 'PRIORITAS_2_WASPADA'): ?>
-                                <span class="badge badge-p2">🟡 Prioritas 2: Waspada</span>
+                                <span class="badge badge-p2">Prioritas 2: Waspada</span>
                             <?php else: ?>
-                                <span class="badge badge-p3">🟢 Prioritas 3: Belum Matang</span>
+                                <span class="badge badge-p3">Prioritas 3: Belum Matang</span>
                             <?php endif; ?>
                         </td>
                         <td style="font-weight:600; color:#555;"><?= htmlspecialchars($r['rekomendasi_tgl_panen']) ?></td>
@@ -124,7 +124,7 @@
     <?php elseif ($subPage === 'analisis_trend'): ?>
         <!-- ANALISIS TREND CHARTS -->
         <div class="card">
-            <h3 style="margin-top:0;">📈 Analisis Trend Kenaikan Brix & Performa Lahan</h3>
+            <h3 style="margin-top:0;">Analisis Trend Kenaikan Brix & Performa Lahan</h3>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; margin-top:1rem;">
                 <div style="background:#f9fbf9; padding:1.2rem; border-radius:12px; border:1px solid #eee;">
                     <h4 style="margin-top:0;">Grafik Trend Kenaikan Brix Temporal</h4>
@@ -176,11 +176,11 @@
 
         <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
             <div class="card">
-                <h3 style="margin-top:0;">🗺️ Peta Spasial Kriging & Heatmap GEE (Leaflet GIS)</h3>
+                <h3 style="margin-top:0;">Peta Spasial Kriging & Heatmap GEE (Leaflet GIS)</h3>
                 <div id="map"></div>
             </div>
             <div class="card">
-                <h3 style="margin-top:0;">📊 Sampel Spasial Terdata</h3>
+                <h3 style="margin-top:0;">Sampel Spasial Terdata</h3>
                 <div style="max-height: 440px; overflow-y: auto;">
                     <table style="width:100%; border-collapse:collapse; font-size:13px;">
                         <thead>

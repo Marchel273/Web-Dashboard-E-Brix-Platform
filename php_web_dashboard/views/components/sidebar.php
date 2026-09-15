@@ -23,9 +23,10 @@ $page = $_GET['page'] ?? 'dashboard';
 
     <ul class="sidebar-nav">
         <?php if ($role === 'ADMIN'): ?>
-            <!-- ADMIN MENU -->
+            <!-- ADMIN HAS FULL SUPER-USER ACCESS TO ALL SYSTEM FEATURES -->
+            <li class="nav-section-title">ADMINISTRASI & SDM</li>
             <li>
-                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard')?'active':'' ?>">
+                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard' || $page==='sdm')?'active':'' ?>">
                     <i class="fa-solid fa-users-gear"></i> Persetujuan & SDM
                 </a>
             </li>
@@ -34,6 +35,32 @@ $page = $_GET['page'] ?? 'dashboard';
                     <i class="fa-solid fa-database"></i> Master Data & GIS
                 </a>
             </li>
+
+            <li class="nav-section-title">FITUR MANAGER AGRONOMI</li>
+            <li>
+                <a href="index.php?page=peta_kriging" class="<?= ($page==='peta_kriging')?'active':'' ?>">
+                    <i class="fa-solid fa-map-location-dot"></i> Peta Spasial Kriging
+                </a>
+            </li>
+            <li>
+                <a href="index.php?page=jadwal_panen" class="<?= ($page==='jadwal_panen')?'active':'' ?>">
+                    <i class="fa-solid fa-calendar-check"></i> Optimization Panen
+                </a>
+            </li>
+            <li>
+                <a href="index.php?page=analisis_trend" class="<?= ($page==='analisis_trend')?'active':'' ?>">
+                    <i class="fa-solid fa-chart-line"></i> Analisis Trend Brix
+                </a>
+            </li>
+
+            <li class="nav-section-title">FITUR PETUGAS LAPANGAN</li>
+            <li>
+                <a href="index.php?page=input_sampel" class="<?= ($page==='input_sampel')?'active':'' ?>">
+                    <i class="fa-solid fa-camera-retro"></i> Input Sampel & OCR
+                </a>
+            </li>
+
+            <li class="nav-section-title">LOGS & KEAMANAN</li>
             <li>
                 <a href="index.php?page=audit_logs" class="<?= ($page==='audit_logs')?'active':'' ?>">
                     <i class="fa-solid fa-clipboard-list"></i> System Audit Logs
@@ -43,7 +70,7 @@ $page = $_GET['page'] ?? 'dashboard';
         <?php elseif ($role === 'MANAGER_AGRONOMI'): ?>
             <!-- MANAGER MENU -->
             <li>
-                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard')?'active':'' ?>">
+                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard' || $page==='peta_kriging')?'active':'' ?>">
                     <i class="fa-solid fa-map-location-dot"></i> Peta Spasial Kriging
                 </a>
             </li>
@@ -61,7 +88,7 @@ $page = $_GET['page'] ?? 'dashboard';
         <?php else: ?>
             <!-- PETUGAS LAPANGAN MENU -->
             <li>
-                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard')?'active':'' ?>">
+                <a href="index.php?page=dashboard" class="<?= ($page==='dashboard' || $page==='input_sampel')?'active':'' ?>">
                     <i class="fa-solid fa-camera-retro"></i> Input Sampel & OCR
                 </a>
             </li>
