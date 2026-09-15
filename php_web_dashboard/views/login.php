@@ -30,7 +30,7 @@
             width: 100%;
             height: 100%;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
             background-color: #0d1a13;
         }
 
@@ -134,78 +134,76 @@
         }
 
         /* ==========================================
-           3. ENLARGED & BALANCED LOGIN CONTAINER
+           3. BALANCED & SPACIOUS LOGIN CONTAINER
            ========================================== */
         .login-wrapper {
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2.5rem 3rem;
+            padding: 2rem;
         }
 
         .login-card {
             width: 100%;
-            max-width: 1280px;
-            min-height: 700px;
-            max-height: 860px;
-            height: 85vh;
+            max-width: 1180px;
+            min-height: 580px;
+            height: auto;
             background: #ffffff;
-            border-radius: 32px;
+            border-radius: 28px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.15);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255,255,255,0.12);
             animation: zoomInCard 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes zoomInCard {
-            from { opacity: 0; transform: scale(0.96) translateY(20px); }
+            from { opacity: 0; transform: scale(0.97) translateY(15px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         /* --- LEFT SIDE: FORM SECTION --- */
         .form-section {
             background: var(--bg-light);
-            padding: 3.5rem 4rem;
+            padding: 2.75rem 3.25rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%;
         }
 
         .brand-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 1.5rem;
+            gap: 14px;
+            margin-bottom: 1rem;
         }
 
         .brand-logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             background: var(--primary-gradient);
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 22px;
-            box-shadow: 0 8px 20px rgba(0, 176, 80, 0.35);
+            font-size: 20px;
+            box-shadow: 0 6px 16px rgba(0, 176, 80, 0.35);
         }
 
         .brand-name {
             font-weight: 800;
-            font-size: 19px;
+            font-size: 17px;
             color: var(--primary-dark);
             letter-spacing: 0.5px;
         }
 
         .brand-sub {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -215,63 +213,63 @@
         .secure-pill {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: #ffffff;
             border: 1px solid #d8e5dc;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
             width: fit-content;
         }
 
         .form-title {
-            font-size: 2.6rem;
+            font-size: 2.1rem;
             font-weight: 800;
             color: var(--primary-dark);
-            margin: 0 0 10px 0;
-            letter-spacing: -0.8px;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
         }
 
         .form-desc {
-            font-size: 15px;
+            font-size: 13.5px;
             color: var(--text-muted);
-            margin: 0 0 1.75rem 0;
-            line-height: 1.5;
+            margin: 0 0 1.2rem 0;
+            line-height: 1.45;
             font-weight: 500;
-            min-height: 45px;
+            min-height: 38px;
         }
 
         /* Role selector pills */
         .role-selector-title {
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 800;
             color: var(--primary-dark);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .role-selector {
             display: flex;
             background: #e3ebe5;
-            padding: 6px;
-            border-radius: 32px;
-            margin-bottom: 1.75rem;
-            gap: 8px;
+            padding: 4px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            gap: 6px;
         }
 
         .role-pill {
             flex: 1;
             border: none;
             background: transparent;
-            padding: 12px 16px;
-            border-radius: 26px;
-            font-size: 13px;
+            padding: 9px 12px;
+            border-radius: 24px;
+            font-size: 12px;
             font-weight: 800;
             color: var(--text-muted);
             cursor: pointer;
@@ -282,23 +280,23 @@
         .role-pill.active, .role-pill:hover {
             background: #ffffff;
             color: var(--primary-dark);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .input-group {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1rem;
         }
 
         .input-label {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
             color: var(--primary-dark);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .input-box {
@@ -309,19 +307,19 @@
 
         .input-box i.input-icon {
             position: absolute;
-            left: 20px;
+            left: 18px;
             color: #8fa896;
-            font-size: 17px;
+            font-size: 15px;
         }
 
         .input-field {
             width: 100%;
-            padding: 16px 48px 16px 52px;
-            border-radius: 32px;
+            padding: 13px 44px 13px 48px;
+            border-radius: 28px;
             border: 1px solid #dce6de;
             background: #ffffff;
             font-family: inherit;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text-dark);
             transition: all 0.25s ease;
@@ -335,37 +333,37 @@
 
         .toggle-password {
             position: absolute;
-            right: 20px;
+            right: 18px;
             background: none;
             border: none;
             color: #8fa896;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             padding: 0;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 18px;
-            border-radius: 32px;
+            padding: 14px;
+            border-radius: 28px;
             border: none;
             background: var(--primary-gradient);
             color: white;
-            font-size: 16px;
+            font-size: 14.5px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            box-shadow: 0 10px 28px rgba(0, 176, 80, 0.35);
-            margin-top: 1rem;
+            gap: 10px;
+            box-shadow: 0 8px 22px rgba(0, 176, 80, 0.35);
+            margin-top: 0.75rem;
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 14px 32px rgba(0, 176, 80, 0.45);
+            box-shadow: 0 12px 28px rgba(0, 176, 80, 0.45);
         }
 
         .btn-submit:active {
@@ -376,94 +374,94 @@
             background: #fde8e8;
             color: #9b1c1c;
             border: 1px solid #f8b4b4;
-            padding: 14px 18px;
-            border-radius: 16px;
-            font-size: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         /* --- RIGHT SIDE: BANNER & QUOTE --- */
         .banner-section {
             background: linear-gradient(145deg, #fbfaf6, #e4f0e8);
-            padding: 3.5rem 4rem;
+            padding: 2.75rem 3.25rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            height: 100%;
         }
 
         .sparkle-badge {
-            width: 54px;
-            height: 54px;
+            width: 46px;
+            height: 46px;
             background: #fff4e5;
             color: #f39c12;
-            border-radius: 18px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.2);
+            font-size: 19px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 6px 16px rgba(243, 156, 18, 0.2);
         }
 
         .quote-title {
-            font-size: 2.5rem;
+            font-size: 2.05rem;
             font-weight: 800;
             color: var(--primary-dark);
-            line-height: 1.25;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.8px;
+            line-height: 1.28;
+            margin-bottom: 1rem;
+            letter-spacing: -0.6px;
         }
 
         .quote-subtitle {
-            font-size: 15px;
+            font-size: 13.5px;
             color: var(--text-muted);
-            line-height: 1.65;
+            line-height: 1.55;
             font-weight: 500;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .platform-tag {
             display: flex;
             align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(10px);
-            padding: 14px 22px;
-            border-radius: 20px;
+            gap: 14px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            padding: 10px 18px;
+            border-radius: 16px;
             border: 1px solid rgba(0,0,0,0.06);
             width: fit-content;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
             z-index: 2;
+            margin-top: 1rem;
         }
 
         .platform-avatar {
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             background: var(--primary-dark);
             color: white;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .platform-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             color: var(--primary-dark);
         }
 
         .platform-desc {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             font-weight: 600;
         }
@@ -474,7 +472,7 @@
             bottom: 0;
             right: -20px;
             width: 100%;
-            height: 230px;
+            height: 200px;
             pointer-events: none;
             opacity: 0.85;
             z-index: 1;
@@ -483,15 +481,14 @@
         @media (max-width: 900px) {
             .login-card {
                 grid-template-columns: 1fr;
-                max-width: 500px;
+                max-width: 480px;
                 min-height: auto;
-                height: auto;
             }
             .banner-section {
                 display: none;
             }
             .form-section {
-                padding: 2.5rem;
+                padding: 2.25rem 2.5rem;
             }
         }
     </style>
@@ -587,7 +584,7 @@
                 </form>
             </div>
             
-            <div style="font-size:12px; color:var(--text-muted); font-weight:600; text-align:center; margin-top:1.5rem;">
+            <div style="font-size:11.5px; color:var(--text-muted); font-weight:600; text-align:center; margin-top:1.2rem;">
                 &copy; <?= date('Y') ?> E-BRIX Enterprise Platform | PG Gempolkrep
             </div>
         </div>
