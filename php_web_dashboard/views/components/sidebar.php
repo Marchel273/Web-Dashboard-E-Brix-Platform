@@ -78,18 +78,6 @@ $page = $_GET['page'] ?? 'dashboard';
         <?php endif; ?>
     </ul>
 
-    <!-- Quick Switch Role Dropdown (For Demo & Testing) -->
-    <div class="role-switcher-box">
-        <div style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:6px;">
-            🔀 Switch Role Demo
-        </div>
-        <select onchange="switchRole(this.value)" style="width:100%; padding:8px; border-radius:8px; background:rgba(255,255,255,0.1); color:white; border:1px solid rgba(255,255,255,0.2); font-weight:700; font-size:12px; cursor:pointer;">
-            <option value="admin" <?= ($role==='ADMIN')?'selected':'' ?>>👑 Admin</option>
-            <option value="manager" <?= ($role==='MANAGER_AGRONOMI')?'selected':'' ?>>👨‍🌾 Manager Agronomi</option>
-            <option value="petugas" <?= ($role==='PETUGAS_LAPANGAN')?'selected':'' ?>>📋 Petugas Lapangan</option>
-        </select>
-    </div>
-
     <!-- Logout Button -->
     <div style="margin-top:auto; padding-top:1rem;">
         <a href="index.php?action=logout" class="btn-logout">
@@ -97,25 +85,3 @@ $page = $_GET['page'] ?? 'dashboard';
         </a>
     </div>
 </div>
-
-<script>
-    function switchRole(role) {
-        // Auto submit login form as selected role for testing
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'index.php?action=login';
-        
-        const userInput = document.createElement('input');
-        userInput.name = 'username';
-        userInput.value = role;
-        form.appendChild(userInput);
-
-        const passInput = document.createElement('input');
-        passInput.name = 'password';
-        passInput.value = 'password';
-        form.appendChild(passInput);
-
-        document.body.appendChild(form);
-        form.submit();
-    }
-</script>

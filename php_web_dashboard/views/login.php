@@ -243,9 +243,19 @@
             margin: 0 0 1.75rem 0;
             line-height: 1.5;
             font-weight: 500;
+            min-height: 45px;
         }
 
         /* Role selector pills */
+        .role-selector-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
         .role-selector {
             display: flex;
             background: #e3ebe5;
@@ -524,12 +534,12 @@
                     </div>
                 </div>
 
-                <div class="secure-pill">
-                    <i class="fa-solid fa-shield-halved"></i> SECURE ACCESS
+                <div class="secure-pill" id="rolePillBadge">
+                    <i class="fa-solid fa-shield-halved"></i> <span>PORTAL ADMIN SISTEM</span>
                 </div>
 
                 <h1 class="form-title">Sign In</h1>
-                <p class="form-desc">Masuk untuk mengelola data Brix, analisis spasial GIS, dan alokasi jadwal panen.</p>
+                <p class="form-desc" id="roleDescText">Portal Akses Administrator: Kelola persetujuan akun petugas, data master pabrik, dan system audit logs.</p>
 
                 <?php if (isset($loginError)): ?>
                     <div class="alert-error">
@@ -539,10 +549,11 @@
                 <?php endif; ?>
 
                 <!-- Role Quick Selector Pills -->
+                <div class="role-selector-title">Pilih Role Hak Akses:</div>
                 <div class="role-selector">
-                    <button type="button" class="role-pill active" onclick="selectRole('admin', 'password', this)">Admin</button>
-                    <button type="button" class="role-pill" onclick="selectRole('manager', 'password', this)">Manager</button>
-                    <button type="button" class="role-pill" onclick="selectRole('petugas', 'password', this)">Petugas</button>
+                    <button type="button" class="role-pill active" onclick="selectRole('admin', 'password', this)">👑 Admin</button>
+                    <button type="button" class="role-pill" onclick="selectRole('manager', 'password', this)">👨‍🌾 Manager</button>
+                    <button type="button" class="role-pill" onclick="selectRole('petugas', 'password', this)">📋 Petugas</button>
                 </div>
 
                 <form method="POST" action="index.php?action=login">
@@ -559,7 +570,7 @@
                     <div class="input-group">
                         <div class="input-label">
                             <span>PASSWORD</span>
-                            <span style="color:#00b050; cursor:pointer; text-transform:none; font-weight:800;" onclick="selectRole('admin', 'password', document.querySelector('.role-pill'))">Role otomatis</span>
+                            <span style="color:#00b050; cursor:pointer; text-transform:none; font-weight:800;" onclick="selectRole('admin', 'password', document.querySelector('.role-pill'))">Kredensial Role</span>
                         </div>
                         <div class="input-box">
                             <i class="fa-solid fa-lock input-icon"></i>
@@ -588,20 +599,20 @@
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                 </div>
 
-                <h2 class="quote-title">
+                <h2 class="quote-title" id="bannerTitle">
                     Presisi Spasial & Optimization Panen Tebu Presisi.
                 </h2>
 
-                <p class="quote-subtitle">
+                <p class="quote-subtitle" id="bannerSubtitle">
                     Platform Intelijen Pemantauan Kadar Brix Spasial, Pemodelan Kriging, dan Manajemen Alokasi Panen Berbasis GEE Cloud & AI Engine.
                 </p>
             </div>
 
             <div class="platform-tag">
-                <div class="platform-avatar">EB</div>
+                <div class="platform-avatar" id="platformAvatar">EB</div>
                 <div>
-                    <div class="platform-name">CoE E-BRIX Platform</div>
-                    <div class="platform-desc">Spatial Intelligence & Harvest Optimization</div>
+                    <div class="platform-name" id="platformName">CoE E-BRIX Platform</div>
+                    <div class="platform-desc" id="platformDesc">Spatial Intelligence & Harvest Optimization</div>
                 </div>
             </div>
 
@@ -629,13 +640,55 @@
         }, 1600);
     });
 
-    // 2. Role Quick Select Switcher
+    // Role Metadata Details
+    const roleMeta = {
+        'admin': {
+            badge: 'PORTAL ADMIN SISTEM',
+            desc: 'Portal Akses Administrator: Kelola persetujuan akun petugas baru, master data pabrik, dan system audit logs.',
+            title: 'Tata Kelola Sistem & Otorisasi SDM.',
+            subtitle: 'Mengontrol keamanan akses pengguna, verifikasi pendaftaran petugas lapangan, serta manajemen master data pabrik gula.',
+            avatar: 'AD',
+            name: 'Portal Administrator',
+            sub: 'System Security & User Management'
+        },
+        'manager': {
+            badge: 'PORTAL MANAGER AGRONOMI',
+            desc: 'Portal Akses Manager: Analisis spasial kematangan Brix, pemodelan Kriging GEE, & keputusan jadwal panen.',
+            title: 'Presisi Spasial & Optimization Panen Tebu.',
+            subtitle: 'Platform Intelijen Pemantauan Kadar Brix Spasial, Pemodelan Kriging, dan Manajemen Alokasi Kuota Giling Pabrik.',
+            avatar: 'MA',
+            name: 'Portal Manager Agronomi',
+            sub: 'Spatial Intelligence & Harvest Scheduling'
+        },
+        'petugas': {
+            badge: 'PORTAL PETUGAS LAPANGAN',
+            desc: 'Portal Field Surveyor: Input data sampel kadar Brix lapangan & pemicu deteksi kamera ML OCR refraktometer.',
+            title: 'Field Ingestion & AI Camera Refractometer.',
+            subtitle: 'Aplikasi survey lapangan untuk menginput koordinat GPS sampel tebu dan ekstraksi otomatis angka Brix via AI Computer Vision.',
+            avatar: 'FL',
+            name: 'Portal Petugas Lapangan',
+            sub: 'Field Data Ingestion & ML OCR Engine'
+        }
+    };
+
+    // 2. Role Quick Select Switcher with Dynamic Description
     function selectRole(user, pass, btn) {
         document.getElementById('username').value = user;
         document.getElementById('password').value = pass;
         
         document.querySelectorAll('.role-pill').forEach(p => p.classList.remove('active'));
         if (btn) btn.classList.add('active');
+
+        const meta = roleMeta[user];
+        if (meta) {
+            document.querySelector('#rolePillBadge span').innerText = meta.badge;
+            document.getElementById('roleDescText').innerText = meta.desc;
+            document.getElementById('bannerTitle').innerText = meta.title;
+            document.getElementById('bannerSubtitle').innerText = meta.subtitle;
+            document.getElementById('platformAvatar').innerText = meta.avatar;
+            document.getElementById('platformName').innerText = meta.name;
+            document.getElementById('platformDesc').innerText = meta.sub;
+        }
     }
 
     // 3. Password Visibility Toggle

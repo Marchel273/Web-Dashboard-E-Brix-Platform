@@ -37,17 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
     }
 }
 
-// Auto-login default Admin for smooth initial loading
+// Enforce Login Check: If user is not logged in and trying to access dashboard, redirect to login page
 if (!$authCtrl->isLoggedIn() && $page !== 'login') {
-    $_SESSION['user'] = [
-        'id' => 'u-admin-001',
-        'username' => 'admin',
-        'name' => 'Budi Santoso, S.T.',
-        'role' => 'ADMIN',
-        'role_label' => '👑 Administrator',
-        'email' => 'admin@pg-gempolkrep.co.id',
-        'avatar' => 'BS'
-    ];
+    header('Location: index.php?page=login');
+    exit;
 }
 
 // Check Authentication for Login Page
