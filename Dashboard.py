@@ -26,15 +26,22 @@ except Exception:
 try:
     # Jika berjalan di Streamlit Cloud (Mendeteksi adanya st.secrets)
     if "gee" in st.secrets:
+        raw_secret = st.secrets["gee"]["json"]
+        # Pastikan key_data selalu berupa string JSON
+        if isinstance(raw_secret, str):
+            key_data_str = raw_secret
+        else:
+            key_data_str = json.dumps(dict(raw_secret))
+        
         credentials = ee.ServiceAccountCredentials(
-            email=json.loads(st.secrets["gee"]["json"])["client_email"],
-            key_data=st.secrets["gee"]["json"]
+            email=json.loads(key_data_str)["client_email"],
+            key_data=key_data_str
         )
-        ee.Initialize(credentials=credentials, project='fabled-archive-491907-g3')
-    
+        ee.Initialize(credentials=credentials, project='ebrix-dashboard')
+        
     # Jika berjalan di Laptop/Lokal (Tidak ada st.secrets)
     else:
-        ee.Initialize(project='fabled-archive-491907-g3')
+        ee.Initialize(project='ebrix-dashboard')
         
     gee_ready = True
 except Exception as e:

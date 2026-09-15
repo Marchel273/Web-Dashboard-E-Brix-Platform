@@ -1,0 +1,7 @@
+Flask==3.0.2
+Flask-Cors==4.0.0
+psycopg2-binary==2.9.9
+earthengine-api==0.1.360
+pandas==2.2.0
+requests==2.31.0
+python-dotenv==1.0.1
