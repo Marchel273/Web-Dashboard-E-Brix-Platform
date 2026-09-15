@@ -134,75 +134,78 @@
         }
 
         /* ==========================================
-           3. SPLIT LOGIN CARD CONTAINER (ENLARGED & BALANCED)
+           3. ENLARGED & BALANCED LOGIN CONTAINER
            ========================================== */
         .login-wrapper {
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 2.5rem 3rem;
         }
 
         .login-card {
             width: 100%;
-            max-width: 1060px;
-            min-height: 630px;
+            max-width: 1280px;
+            min-height: 720px;
+            max-height: 860px;
+            height: 85vh;
             background: #ffffff;
-            border-radius: 28px;
+            border-radius: 32px;
             display: grid;
-            grid-template-columns: 1.05fr 1fr;
+            grid-template-columns: 1fr 1fr;
             overflow: hidden;
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255,255,255,0.12);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.15);
             animation: zoomInCard 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes zoomInCard {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            from { opacity: 0; transform: scale(0.96) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- LEFT SIDE: FORM --- */
+        /* --- LEFT SIDE: FORM SECTION --- */
         .form-section {
             background: var(--bg-light);
-            padding: 3rem 3.25rem;
+            padding: 3.5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
         }
 
         .brand-header {
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 1.25rem;
+            gap: 16px;
+            margin-bottom: 1.5rem;
         }
 
         .brand-logo-icon {
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             background: var(--primary-gradient);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
-            box-shadow: 0 6px 16px rgba(0, 176, 80, 0.35);
+            font-size: 22px;
+            box-shadow: 0 8px 20px rgba(0, 176, 80, 0.35);
         }
 
         .brand-name {
             font-weight: 800;
-            font-size: 17px;
+            font-size: 19px;
             color: var(--primary-dark);
             letter-spacing: 0.5px;
         }
 
         .brand-sub {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -212,33 +215,33 @@
         .secure-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             background: #ffffff;
             border: 1px solid #d8e5dc;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             width: fit-content;
         }
 
         .form-title {
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: var(--primary-dark);
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.8px;
         }
 
         .form-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-muted);
-            margin: 0 0 1.5rem 0;
-            line-height: 1.45;
+            margin: 0 0 1.75rem 0;
+            line-height: 1.5;
             font-weight: 500;
         }
 
@@ -246,19 +249,19 @@
         .role-selector {
             display: flex;
             background: #e3ebe5;
-            padding: 5px;
-            border-radius: 30px;
-            margin-bottom: 1.5rem;
-            gap: 6px;
+            padding: 6px;
+            border-radius: 32px;
+            margin-bottom: 1.75rem;
+            gap: 8px;
         }
 
         .role-pill {
             flex: 1;
             border: none;
             background: transparent;
-            padding: 10px 14px;
-            border-radius: 24px;
-            font-size: 12px;
+            padding: 12px 16px;
+            border-radius: 26px;
+            font-size: 13px;
             font-weight: 800;
             color: var(--text-muted);
             cursor: pointer;
@@ -269,23 +272,23 @@
         .role-pill.active, .role-pill:hover {
             background: #ffffff;
             color: var(--primary-dark);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .input-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
         }
 
         .input-label {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 800;
             color: var(--primary-dark);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .input-box {
@@ -296,19 +299,19 @@
 
         .input-box i.input-icon {
             position: absolute;
-            left: 18px;
+            left: 20px;
             color: #8fa896;
-            font-size: 15px;
+            font-size: 17px;
         }
 
         .input-field {
             width: 100%;
-            padding: 15px 44px 15px 48px;
-            border-radius: 30px;
+            padding: 16px 48px 16px 52px;
+            border-radius: 32px;
             border: 1px solid #dce6de;
             background: #ffffff;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-dark);
             transition: all 0.25s ease;
@@ -322,37 +325,37 @@
 
         .toggle-password {
             position: absolute;
-            right: 18px;
+            right: 20px;
             background: none;
             border: none;
             color: #8fa896;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
             padding: 0;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            border-radius: 30px;
+            padding: 18px;
+            border-radius: 32px;
             border: none;
             background: var(--primary-gradient);
             color: white;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 8px 24px rgba(0, 176, 80, 0.35);
-            margin-top: 0.75rem;
+            gap: 12px;
+            box-shadow: 0 10px 28px rgba(0, 176, 80, 0.35);
+            margin-top: 1rem;
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(0, 176, 80, 0.45);
+            box-shadow: 0 14px 32px rgba(0, 176, 80, 0.45);
         }
 
         .btn-submit:active {
@@ -363,93 +366,94 @@
             background: #fde8e8;
             color: #9b1c1c;
             border: 1px solid #f8b4b4;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 13px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        /* --- RIGHT SIDE: BANNER & QUOTE (EQUALIZED HEIGHT) --- */
+        /* --- RIGHT SIDE: BANNER & QUOTE --- */
         .banner-section {
             background: linear-gradient(145deg, #fbfaf6, #e4f0e8);
-            padding: 3rem 3.25rem;
+            padding: 3.5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .sparkle-badge {
-            width: 48px;
-            height: 48px;
+            width: 54px;
+            height: 54px;
             background: #fff4e5;
             color: #f39c12;
-            border-radius: 16px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-bottom: 1.75rem;
-            box-shadow: 0 6px 16px rgba(243, 156, 18, 0.2);
+            font-size: 22px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.2);
         }
 
         .quote-title {
-            font-size: 2.15rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--primary-dark);
             line-height: 1.25;
-            margin-bottom: 1.25rem;
-            letter-spacing: -0.5px;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.8px;
         }
 
         .quote-subtitle {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.65;
             font-weight: 500;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .platform-tag {
             display: flex;
             align-items: center;
-            gap: 14px;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(8px);
-            padding: 12px 18px;
-            border-radius: 16px;
+            gap: 16px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 14px 22px;
+            border-radius: 20px;
             border: 1px solid rgba(0,0,0,0.06);
             width: fit-content;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
             z-index: 2;
         }
 
         .platform-avatar {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: var(--primary-dark);
             color: white;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .platform-name {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 800;
             color: var(--primary-dark);
         }
 
         .platform-desc {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 600;
         }
@@ -460,7 +464,7 @@
             bottom: 0;
             right: -20px;
             width: 100%;
-            height: 200px;
+            height: 230px;
             pointer-events: none;
             opacity: 0.85;
             z-index: 1;
@@ -469,11 +473,15 @@
         @media (max-width: 900px) {
             .login-card {
                 grid-template-columns: 1fr;
-                max-width: 460px;
+                max-width: 500px;
                 min-height: auto;
+                height: auto;
             }
             .banner-section {
                 display: none;
+            }
+            .form-section {
+                padding: 2.5rem;
             }
         }
     </style>
@@ -540,7 +548,7 @@
                 <form method="POST" action="index.php?action=login">
                     <div class="input-group">
                         <div class="input-label">
-                            <span>ID / Username / Email</span>
+                            <span>ID / USERNAME / EMAIL</span>
                         </div>
                         <div class="input-box">
                             <i class="fa-solid fa-envelope input-icon"></i>
@@ -550,7 +558,7 @@
 
                     <div class="input-group">
                         <div class="input-label">
-                            <span>Password</span>
+                            <span>PASSWORD</span>
                             <span style="color:#00b050; cursor:pointer; text-transform:none; font-weight:800;" onclick="selectRole('admin', 'password', document.querySelector('.role-pill'))">Role otomatis</span>
                         </div>
                         <div class="input-box">
@@ -568,12 +576,12 @@
                 </form>
             </div>
             
-            <div style="font-size:11px; color:var(--text-muted); font-weight:600; text-align:center; margin-top:1.5rem;">
+            <div style="font-size:12px; color:var(--text-muted); font-weight:600; text-align:center; margin-top:1.5rem;">
                 &copy; <?= date('Y') ?> E-BRIX Enterprise Platform | PG Gempolkrep
             </div>
         </div>
 
-        <!-- RIGHT COLUMN: BANNER & QUOTE (ENLARGED & BALANCED) -->
+        <!-- RIGHT COLUMN: BANNER & QUOTE -->
         <div class="banner-section">
             <div>
                 <div class="sparkle-badge">
